@@ -48,14 +48,16 @@ struct ContentView: View {
 
                         ForEach(0..<101, id: \.self) {
                             Text($0, format: .percent)
+                                .foregroundStyle($0 > 0 ? .green : .red)
                         }
                         
                     }
                     .pickerStyle(.navigationLink)
                 }
                 
-                Section("Total Amount") {
+                Section("Total Amount"){
                     Text(totalAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundStyle(tipPercentage > 0 ? .green : .red)
                 }
                 
                 Section("Amount per person") {
